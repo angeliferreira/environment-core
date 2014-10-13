@@ -2,8 +2,6 @@ package br.com.lemao.environment.junit;
 
 import java.lang.reflect.Method;
 
-import javax.naming.NamingException;
-
 import org.junit.runner.Description;
 import org.junit.runners.model.Statement;
 
@@ -52,8 +50,7 @@ public class EnvironmentStatement extends Statement {
 		}
 	}
 
-	private Environment getEnvironmentInstance(Class<? extends Environment> environmentClass)
-			throws InstantiationException, IllegalAccessException, NamingException {
+	private Environment getEnvironmentInstance(Class<? extends Environment> environmentClass) throws InstantiationException, IllegalAccessException {
 		return (Environment) environmentClass.newInstance();
 	}
 
