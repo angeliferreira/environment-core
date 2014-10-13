@@ -3,47 +3,34 @@
 Environment is a basic project for running set ups before running each test method in a customized way than using @org.junit.Before and @org.junit.After of JUnit.
 
 
-## Environment Core
+## Maven integration
 
-### Overview
-
-*Environment Core* é um projeto básico para a execução de _set ups_ antes da execução de cada método de teste de maneira mais customizada do que o uso com @org.junit.Before e @org.junit.After do JUnit.
-
-### Documentação do Projeto
-
-* Integração com o Maven
-* Getting Started
-** Estrutura Básica
-** Estrutura Customizada
-
-## Integração com o Maven
-
-
-Para integrar o *Environment Core* ao seu projeto Maven, basta declarar a seguinte dependência em seu arquivo POM.
+To integrate *Environment Core* to your Maven project, you must declare the following dependency:
 
 ```xml
 <dependency>
     <groupId>br.com.lemao</groupId>
     <artifactId>environment</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <scope>test</scope>
 </dependency>
 ```
 
 ## Getting Started
 
-### Estrutura Básica
+## Basic Structure
 
-#### Criando sua classe de Environment
+### Creating your environment class
 
-A classe abstrata *Environment* é a superclasse da estrutura de Environments, é nela que deve ficar a chamada da criação dos dados.
+The abstract class *Environment* is the superclass for the Environments structure, where you gonna put your data creation calls. 
 
-Ela suporta duas implementações básicas para o seu uso, por classe ou por métodos.
+It supports 2 different basic usages, by class or by method.
 
-#### Com estrutura de Environment por classe
+### Structure of environment per class
 
-A primeira implementação é utilizada quando se quer usar uma estrutura de Environments por classe, implementando o método *run()*. Nesse caso a abstração é ter uma classe por Environment.
+The first implementation would provide one environment abstraction per class. You must implement the *run()* method only.
 
-Sua implementação em uma estrutura de Environments por classe ficaria da seguinte forma:
+Your implementation, using the class Environment structure would be as follows:
 
 ```java
 public class SampleEnvironment extends Environment {
@@ -56,11 +43,11 @@ public class SampleEnvironment extends Environment {
 }
 ```
 
-#### Com estrutura de Environment por método
+### Structure of environment per method
 
-A segunda implementação é utilizada quando se quer usar uma estrutura de Environments por métodos, implementando métodos que desejar. Nesse caso a abstração é ter Environment por métodos em uma mesma classe.
+The second implementation would provide one environment abstraction per method. You must implement different methods as you will. In this case you must create an Environment class which comprises the related methods.
 
-Sua implementação em uma estrutura de Environments por métodos ficaria da seguinte forma:
+Your implementation, using the method Environment structure would be as follows:
 
 ```java
 public class SampleEnvironment extends Environment {
@@ -76,7 +63,7 @@ public class SampleEnvironment extends Environment {
 }
 ```
 
-#### Anotação @GivenEnvironment
+### @GivenEnvironment annotation
 
 A utilização do Environment se dá pelo uso da anotação *@GivenEnvironment*. Seu nome não foi dado levianamente, ele foi pensado para levar naturalmente para um conceito de *_[BDD](http://en.wikipedia.org/wiki/Behavior-driven_development)_* (_behavior driven development_) onde nesse caso seria a abstração do que você precisaria ter como estrutura inicial para o seu teste.{color}
 
@@ -144,7 +131,7 @@ public class Sample {
 }
 ```
 
-#### Anotação @IgnoreEnvironment
+### Anotação @IgnoreEnvironment
 
 A anotação *IgnoreEnvironment* diz ao executor de testes que o mesmo deve ignorar a execução do Environment anotado na classe.
 
@@ -163,7 +150,7 @@ public class Sample {
 }
 ```
 
-### Criando sua estrutura Environments de maneira hierárquica
+## Criando sua estrutura Environments de maneira hierárquica
 
 É possivel construir uma estrutura de environments hieráquicos. Para isso é só anotar o método do Environment com @GivenEnvironment passando o Environment que se deseja como pai.
 
