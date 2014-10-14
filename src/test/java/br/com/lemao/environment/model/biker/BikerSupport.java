@@ -15,4 +15,12 @@ public final class BikerSupport {
 		return HibernateUtil.getCurrentSession().createQuery("From Biker").list();
 	}
 
+	public Biker findByName(String name) {
+		for (Biker biker : findAll()) {
+			if (biker.getName().equals(name))
+				return biker;			
+		}
+		return null;
+	}
+
 }

@@ -15,7 +15,7 @@ public class HibernateUtil {
 	}
 	
 	private static void loadSessionFactory() {
-		if( sf == null ) {
+		if (sf == null) {
 			Configuration configuration = new Configuration().configure();
 			StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());
 			sf = configuration.buildSessionFactory(builder.build());

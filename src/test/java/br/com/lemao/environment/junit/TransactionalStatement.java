@@ -24,7 +24,7 @@ public class TransactionalStatement extends EnvironmentStatement {
 	@Override
 	protected void after() {
 		transaction.rollback();
-		HibernateUtil.getCurrentSession().close();
+		HibernateUtil.getCurrentSession().disconnect();
 	}
 
 }
