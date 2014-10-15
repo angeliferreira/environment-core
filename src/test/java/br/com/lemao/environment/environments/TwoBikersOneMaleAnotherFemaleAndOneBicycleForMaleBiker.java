@@ -1,4 +1,4 @@
-package br.com.lemao.environment;
+package br.com.lemao.environment.environments;
 
 import br.com.lemao.environment.annotation.GivenEnvironment;
 import br.com.lemao.environment.model.biker.Biker;

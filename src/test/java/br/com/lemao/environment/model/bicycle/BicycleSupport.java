@@ -15,4 +15,12 @@ public final class BicycleSupport {
 		return HibernateUtil.getCurrentSession().createQuery("From Bicycle").list();
 	}
 
+	public Bicycle findByModelName(String modelName) {
+		for (Bicycle bicycle : findAll()) {
+			if (bicycle.getModelName().equals(modelName))
+				return bicycle;			
+		}
+		return null;
+	}
+
 }
