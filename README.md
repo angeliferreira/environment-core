@@ -10,7 +10,7 @@ To integrate *Environment Core* to your Maven project, you must declare the foll
 ```xml
 <dependency>
     <groupId>br.com.lemao</groupId>
-    <artifactId>environment</artifactId>
+    <artifactId>environment-core</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <scope>test</scope>
 </dependency>
