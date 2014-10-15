@@ -1,4 +1,6 @@
-![ScreenShot](https://raw.github.com/angeliferreira/environment-core/master/environment.jpg)
+<p align="center">
+  <img src="https://github.com/angeliferreira/environment-core/master/environment.jpg?raw=true"/>
+</p>
 
 # environment  [![Build Status](https://travis-ci.org/angeliferreira/environment-core.png?branch=master)](https://travis-ci.org/angeliferreira/environment-core)
 
