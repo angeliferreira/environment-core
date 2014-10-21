@@ -69,7 +69,7 @@ public class SampleEnvironment extends Environment {
 
 ### @GivenEnvironment annotation
 
-A utilização do Environment se dá pelo uso da anotação *@GivenEnvironment*. Seu nome não foi dado levianamente, ele foi pensado para levar naturalmente para um conceito de *_[BDD](http://en.wikipedia.org/wiki/Behavior-driven_development)_* (_behavior driven development_) onde nesse caso seria a abstração do que você precisaria ter como estrutura inicial para o seu teste.{color}
+The use of the Environment is through *@GivenEnvironment* annotation. Its name was not given lightly, it was thought to lead naturally to the concept of *_[BDD](http://en.wikipedia.org/wiki/Behavior-driven_development)_* (_behavior driven development_) in which case it would be the abstraction of what you need to have as initial structure for your test.
 
 A anotação GivenEnvironment diz qual estrutura será executada antes do método de teste. No caso da anotação estar em uma classe de teste, todos os casos de teste que NÃO estiverem anotadas com *@GivenEnvironment* ou&nbsp;*@IgnoreEnvironment* terão sua execução realizada após a execução da estrutura do Environment.
 
