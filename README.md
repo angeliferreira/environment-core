@@ -71,13 +71,13 @@ public class SampleEnvironment extends Environment {
 
 The use of the Environment is through *@GivenEnvironment* annotation. Its name was not given lightly, it was thought to lead naturally to the concept of *_[BDD](http://en.wikipedia.org/wiki/Behavior-driven_development)_* (_behavior driven development_) in which case it would be the abstraction of what you need to have as initial structure for your test.
 
-A anotação GivenEnvironment diz qual estrutura será executada antes do método de teste. No caso da anotação estar em uma classe de teste, todos os casos de teste que NÃO estiverem anotadas com *@GivenEnvironment* ou&nbsp;*@IgnoreEnvironment* terão sua execução realizada após a execução da estrutura do Environment.
+The annotation @GivenEnvironment tells which structure will be executed before the test method. In the case of the annotation be in a test class, all tests that are NOT annotated with *@GivenEnvironment* or *@IgnoreEnvironment* will be executed after the execution of the Environment structure.
 
-A anotação GivenEnvironment suporta duas utilizações básicas.
+The GivenEnvironment annotation supports two basic uses.
 
-A primeira utilização se dá passando como parâmetro somente a classe de Environment que possui um método run(), estrutura de Environment por classe.
+The first use you only have to pass as parameter the Environment class which has a run() method, structure Environment per class.
 
-Sua utilização em um caso de teste ficaria da seguinte forma:
+Its use in a test case would be as follows:
 
 ```java
 public class Sample {
@@ -91,23 +91,7 @@ public class Sample {
 }
 ```
 
-A segunda utilização se dá passando como parâmetro a classe de Environment e o nome do método do Environment,&nbsp;estrutura de Environment por método.
-
-Sua utilização em um caso de teste ficaria da seguinte forma:
-
-```java
-public class Sample {
-
-   @Test
-   @GivenEnvironment(value=EnvironmentSample.class, environmentName="myEnvironmentMethodNameOneSample")
-   public void method() {
-      org.junit.Assert.assertFalse(SampleUtil.findAll().isEmpty());
-   }
-
-}
-```
-
-Sua utilização em uma classe de teste ficaria da seguinte forma:
+or 
 
 ```java
 @GivenEnvironment(EnvironmentSample.class)
@@ -121,7 +105,23 @@ public class Sample {
 }
 ```
 
-ou
+The second use you have to pass as parameter the Environment class and the Environment method, structure Environment per method.
+
+Its use in a test case would be as follows:
+
+```java
+public class Sample {
+
+   @Test
+   @GivenEnvironment(value=EnvironmentSample.class, environmentName="myEnvironmentMethodNameOneSample")
+   public void method() {
+      org.junit.Assert.assertFalse(SampleUtil.findAll().isEmpty());
+   }
+
+}
+```
+
+or
 
 ```java
 @GivenEnvironment(value=EnvironmentSample.class, environmentName="myEnvironmentMethodNameOneSample")
@@ -135,11 +135,11 @@ public class Sample {
 }
 ```
 
-### Anotação @IgnoreEnvironment
+### @IgnoreEnvironment annotation
 
-A anotação *IgnoreEnvironment* diz ao executor de testes que o mesmo deve ignorar a execução do Environment anotado na classe.
+The *IgnoreEnvironment* annotation tells the test runner that it should ignore the Environment annotated in the implementing class.
 
-Sua utilização em um caso de teste ficaria da seguinte forma:
+Its use in a test case would be as follows:
 
 ```java
 @GivenEnvironment(EnvironmentSample.class)
@@ -154,11 +154,11 @@ public class Sample {
 }
 ```
 
-## Criando sua estrutura Environments de maneira hierárquica
+## Creating Environments hierarchically
 
-É possivel construir uma estrutura de environments hieráquicos. Para isso é só anotar o método do Environment com @GivenEnvironment passando o Environment que se deseja como pai.
+It is possible to build a structure of hierarchical environments. You only need annotate the Environment method with @GivenEnvironment passing the Environment you want as a parent.
 
-Sua utilização em uma estrutura de Environment por métodos ficaria da seguinte forma:
+Its use in a Structure of environment per method would be as follows:
 
 ```java
 public class SampleEnvironment extends Environment {
@@ -175,7 +175,7 @@ public class SampleEnvironment extends Environment {
 }
 ```
 
-Sua utilização em uma estrutura de Environment por classe ficaria da seguinte forma:
+Its use in a Structure of environment per class would be as follows:
 
 ```java
 public class SampleEnvironmentOneSample extends Environment {
@@ -198,13 +198,13 @@ public class SampleEnvironment3Samples extends Environment {
 }
 ```
 
-## Estrutura Customizada
+## Custom structure
 
-Muitas vezes é necessários fazer algumas configurações antes de rodar cada Environment. E agora?
+It is often necessary to do some settings before running each Environment. Now what?
 
-Não tem problema, é possível customizar uma execução antes ou depois da execução de cada environment. Mas como posso fazer essa customização?
+No problem, you can customize a execution before or after completion of each environment. But how can I do this customization?
 
-Para isso é necessário somente criar uma *Rule* e um *Statement* que estende de *EnvironmentStatement*.
+It is only necessary to create a *Rule* and a *Statement* extending *EnvironmentStatement*.
 
 ```java
 public class MyRule implements TestRule {
@@ -226,19 +226,19 @@ public class MyStatement extends EnvironmentStatement {
 
    @Override
    protected void before() {
-      // Chamo que eu eu quero fazer antes da execução do Environment aqui!
-      super.before(); // Essa chamada faz com que o environment seja executado
+      // I call what I want to do before running the Environment here!
+      super.before(); // This call executes the environment
    }
 
    @Override
    protected void after() {
-      // Chamo que eu eu quero fazer depois da execução do Environment aqui!
+      // I call what I want to do after running the Environment here!
    }
 
 }
 ```
 
-E o uso na minha classe de teste fica assim:
+Its use in a test case would be as follows:
 
 ```java
 public class Sample {
@@ -255,7 +255,7 @@ public class Sample {
 }
 ```
 
-Nesse caso o fluxo de execução é o seguinte:
+In this case the execution flow is as follows:
 
 ```java
 br.com.lemao.environment.MyStatement.before()
