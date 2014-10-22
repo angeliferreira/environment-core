@@ -6,6 +6,14 @@
 	<artifactId>environment-core</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
+	<developers>
+		<developer>
+			<id>guilhermeferreira</id>
+			<name>Guilherme Ferreira</name>
+			<email>angeliferreira@gmail.com</email>
+		</developer>
+	</developers>
+
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
