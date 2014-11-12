@@ -202,7 +202,7 @@ public class SampleEnvironment3Samples extends Environment {
 
 It is often necessary to do some settings before running each Environment. Now what?
 
-No problem, you can customize a execution before or after completion of each environment. But how can I do this customization?
+No problem, you can customize a execution before each environment and after the test execution. But how can I do this customization?
 
 It is only necessary to create a *Rule* and a *Statement* extending *EnvironmentStatement*.
 
@@ -232,7 +232,7 @@ public class MyStatement extends EnvironmentStatement {
 
    @Override
    protected void after() {
-      // I call what I want to do after running the Environment here!
+      // I call what I want to do after running the Test here!
    }
 
 }
