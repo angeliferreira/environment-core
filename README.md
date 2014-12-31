@@ -268,3 +268,4 @@ br.com.lemao.environment.MyStatement.after()
 
 * *_[SimulaTest - Simulatest Test Harness Framework](https://github.com/gabrielsuch/simulatest)_*
 * *_[Fixture Factory](https://github.com/six2six/fixture-factory)_*
+* *_[DbUnit](http://dbunit.sourceforge.net/)_*
