@@ -8,6 +8,7 @@ import org.junit.runners.model.Statement;
 import br.com.lemao.environment.Environment;
 import br.com.lemao.environment.annotation.GivenEnvironment;
 import br.com.lemao.environment.annotation.IgnoreEnvironment;
+import br.com.lemao.environment.exception.AfterEnvironmentException;
 import br.com.lemao.environment.exception.EnvironmentException;
 import br.com.lemao.environment.exception.EnvironmentNotImplementedException;
 
@@ -41,12 +42,29 @@ public class EnvironmentStatement extends Statement {
 
 			GivenEnvironment environmentFather = environmentMethod.getAnnotation(GivenEnvironment.class);
 			if (environmentFather != null) runEnvironment(environmentFather);
-
+			beforeRun(givenEnvironment);
 			environmentMethod.invoke(getEnvironmentInstance(environmentClass));
 		} catch (NoSuchMethodException e) {
 			throw new EnvironmentNotImplementedException(environmentClass, givenEnvironment.environmentName(), e);
 		} catch (Exception e) {
 			throw new EnvironmentException(environmentClass, givenEnvironment.environmentName(), e);
+		}finally{
+			afterRun(givenEnvironment);
+		}
+	}
+	
+	private void beforeRun(GivenEnvironment givenEnvironment) throws Exception{
+		Class<? extends Environment> value = givenEnvironment.value();
+		value.newInstance().beforeRun();
+	}
+	
+	private void afterRun(GivenEnvironment givenEnvironment){
+		Class<? extends Environment> value = givenEnvironment.value();
+		
+		try {
+			value.newInstance().afterRun();
+		} catch (Exception e) {
+			throw new AfterEnvironmentException(value, givenEnvironment.environmentName(), e);
 		}
 	}
 
