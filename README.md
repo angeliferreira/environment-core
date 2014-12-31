@@ -9,7 +9,7 @@ Environment is a basic project for running set ups before running each test meth
 
 ## Maven integration
 
-To integrate *Environment Core* to your Maven project, you must declare the following dependency:
+To integrate *Environment Core* to your Maven project, you must declare the following dependency (Not in maven repository yet, must install it local):
 
 ```xml
 <dependency>
@@ -263,3 +263,8 @@ br.com.lemao.environment.SampleEnvironment.run()
 br.com.lemao.environment.Sample.sampleTest()
 br.com.lemao.environment.MyStatement.after()
 ```
+
+## You must also see
+
+*_[SimulaTest - Simulatest Test Harness Framework](https://github.com/gabrielsuch/simulatest)_*
+*_[Fixture Factory](https://github.com/six2six/fixture-factory)_*
