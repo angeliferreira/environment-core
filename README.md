@@ -266,5 +266,5 @@ br.com.lemao.environment.MyStatement.after()
 
 ## You must also see
 
-*_[SimulaTest - Simulatest Test Harness Framework](https://github.com/gabrielsuch/simulatest)_*
-*_[Fixture Factory](https://github.com/six2six/fixture-factory)_*
+* *_[SimulaTest - Simulatest Test Harness Framework](https://github.com/gabrielsuch/simulatest)_*
+* *_[Fixture Factory](https://github.com/six2six/fixture-factory)_*
