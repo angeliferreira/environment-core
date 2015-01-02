@@ -36,13 +36,14 @@ public class EnvironmentStatement extends Statement {
 
 	private void runEnvironment(GivenEnvironment givenEnvironment) {
 		Class<? extends Environment> environmentClass = givenEnvironment.value();
-
 		try {
 			Method environmentMethod = environmentClass.getMethod(givenEnvironment.environmentName());
 
 			GivenEnvironment environmentFather = environmentMethod.getAnnotation(GivenEnvironment.class);
 			if (environmentFather != null) runEnvironment(environmentFather);
+			
 			beforeRun(givenEnvironment);
+			
 			environmentMethod.invoke(getEnvironmentInstance(environmentClass));
 		} catch (NoSuchMethodException e) {
 			throw new EnvironmentNotImplementedException(environmentClass, givenEnvironment.environmentName(), e);
@@ -54,17 +55,16 @@ public class EnvironmentStatement extends Statement {
 	}
 	
 	private void beforeRun(GivenEnvironment givenEnvironment) throws Exception{
-		Class<? extends Environment> value = givenEnvironment.value();
-		value.newInstance().beforeRun();
+		Class<? extends Environment> environmentClass = givenEnvironment.value();
+		environmentClass.newInstance().beforeRun();
 	}
 	
 	private void afterRun(GivenEnvironment givenEnvironment){
-		Class<? extends Environment> value = givenEnvironment.value();
-		
+		Class<? extends Environment> environmentClass = givenEnvironment.value();
 		try {
-			value.newInstance().afterRun();
+			environmentClass.newInstance().afterRun();
 		} catch (Exception e) {
-			throw new AfterEnvironmentException(value, givenEnvironment.environmentName(), e);
+			throw new AfterEnvironmentException(environmentClass, givenEnvironment.environmentName(), e);
 		}
 	}
 

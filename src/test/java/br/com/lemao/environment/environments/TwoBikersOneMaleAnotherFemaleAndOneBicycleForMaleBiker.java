@@ -4,15 +4,9 @@ import static org.hamcrest.Matchers.hasSize;
 import static org.junit.Assert.assertThat;
 import br.com.lemao.environment.annotation.GivenEnvironment;
 import br.com.lemao.environment.model.biker.Biker;
-import br.com.lemao.environment.model.biker.BikerSupport;
 import br.com.lemao.environment.model.gender.Gender;
 
 public class TwoBikersOneMaleAnotherFemaleAndOneBicycleForMaleBiker extends	BikerEnvironment {
-	
-	@Override
-	public void afterRun() {
-		assertThat(new BikerSupport().findAll(), hasSize(2));
-	}
 	
 	@Override
 	@GivenEnvironment(OneMaleBikerAndOneBicycleForThisBiker.class)
@@ -26,6 +20,11 @@ public class TwoBikersOneMaleAnotherFemaleAndOneBicycleForMaleBiker extends	Bike
 	
 	@Override
 	public void beforeRun() {
-		assertThat(new BikerSupport().findAll(), hasSize(1));
+		assertThat(bikerSupport.findAll(), hasSize(1));
+	}
+	
+	@Override
+	public void afterRun() {
+		assertThat(bikerSupport.findAll(), hasSize(2));
 	}
 }
