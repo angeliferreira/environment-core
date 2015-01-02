@@ -54,22 +54,22 @@ public class SampleEnvironment extends Environment {
 Your implementation using *beforeRun()* and *afterRun()* would be as follows:
 
 ```java
-public class TestSample extends Environment {
-		
-	@Override
-	public void run() {
-		SampleUtil.createSample();
-	}
-		
-	@Override
-	public void afterRun() {
-		SampleUtil.afterCreateSample();
-	}
-		
-	@Override
-	public void beforeRun() {
-		SampleUtil.beforeCreateSample();
-	}
+public class SampleEnvironment extends Environment {
+
+    @Override
+    public void run() {
+        SampleUtil.createSample();
+    }
+
+    @Override
+    public void afterRun() {
+        SampleUtil.afterCreateSample();
+    }
+
+    @Override
+    public void beforeRun() {
+        SampleUtil.beforeCreateSample();
+    }
 }
 ```
 
