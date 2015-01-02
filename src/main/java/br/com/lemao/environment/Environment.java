@@ -9,5 +9,9 @@ public abstract class Environment {
 	public void run() {
 		throw new EnvironmentNotImplementedException(getClass(), DEFAULT_ENVIRONMENT_METHOD_NAME, null);
 	}
-
+	
+	public void beforeRun(){}
+	
+	public void afterRun(){}
+	
 }
