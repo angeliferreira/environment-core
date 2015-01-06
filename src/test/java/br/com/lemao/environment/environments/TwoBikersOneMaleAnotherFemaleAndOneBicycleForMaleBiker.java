@@ -21,10 +21,12 @@ public class TwoBikersOneMaleAnotherFemaleAndOneBicycleForMaleBiker extends	Bike
 	@Override
 	public void beforeRun() {
 		assertThat(bikerSupport.findAll(), hasSize(1));
+		assertThat(bicycleSupport.findAll(), hasSize(1));
 	}
 	
 	@Override
 	public void afterRun() {
 		assertThat(bikerSupport.findAll(), hasSize(2));
+		assertThat(bicycleSupport.findAll(), hasSize(1));
 	}
 }
