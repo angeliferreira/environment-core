@@ -303,6 +303,7 @@ public class Sample {
       org.junit.Assert.assertTrue(SampleUtil.findAll().isEmpty());
    }
 }
+```
 
 The runner can have their behavior easily customized by overriding the method *getTestRules()*, doing it, you can add additional
 *TestRule* to perform any expected behavior after the default implementation.
