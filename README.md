@@ -290,6 +290,23 @@ br.com.lemao.environment.Sample.sampleTest()
 br.com.lemao.environment.MyStatement.after()
 ```
 
+It's also available one Junit runner, this runner provide the same features that the default Junit runner provide plus the 
+environment executions.   
+
+```java
+@RunWith(EnvironmentRunner.class)
+public class Sample {
+
+   @Test
+   @GivenEnvironment(SampleEnvironment.class)
+   public void sampleTest() {
+      org.junit.Assert.assertTrue(SampleUtil.findAll().isEmpty());
+   }
+}
+
+The runner can have their behavior easily customized by overriding the method *getTestRules()*, doing it, you can add additional
+*TestRule* to perform any expected behavior after the default implementation.
+
 ## You must also see
 
 * *_[SimulaTest - Simulatest Test Harness Framework](https://github.com/gabrielsuch/simulatest)_*
