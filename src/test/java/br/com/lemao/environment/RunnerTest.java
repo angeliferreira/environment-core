@@ -1,14 +1,17 @@
 package br.com.lemao.environment;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 import java.util.List;
 
+import org.junit.AfterClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import br.com.lemao.environment.annotation.GivenEnvironment;
 import br.com.lemao.environment.environments.BikersAndBikesEnvironmentSet;
+import br.com.lemao.environment.hibernate.HibernateUtil;
 import br.com.lemao.environment.junit.EnvironmentRunner;
 import br.com.lemao.environment.model.bicycle.Bicycle;
 import br.com.lemao.environment.model.bicycle.BicycleSupport;
@@ -40,5 +43,10 @@ public class RunnerTest {
 		
 		assertEquals(2, bikerSupport.findAll().size());
 		assertEquals(1, bicycleSupport.findAll().size());
+	}
+	
+	@AfterClass
+	public static void tearDownHibernateEnvironment(){
+		HibernateUtil.getCurrentSession().getTransaction().rollback();
 	}
 }
