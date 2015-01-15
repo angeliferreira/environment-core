@@ -4,7 +4,7 @@ import br.com.lemao.environment.annotation.GivenEnvironment;
 import br.com.lemao.environment.model.bicycle.Bicycle;
 import br.com.lemao.environment.model.biker.Biker;
 
-public class BikerEnvironment extends AbstractBikerBicyclesEnvironment {
+public class BikerEnvironment extends AbstractBikerBicycleEnvironment {
 	
 	public void twoBikersOneMaleAnotherFemale() {
 		Biker zeBiker = oneBiker().withName("Zé Grandão").male().gimme();

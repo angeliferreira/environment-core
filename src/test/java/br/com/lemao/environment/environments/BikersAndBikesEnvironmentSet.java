@@ -6,7 +6,7 @@ import br.com.lemao.environment.model.biker.Biker;
 
 public class BikersAndBikesEnvironmentSet {
 
-	public static final class TwoBikers extends AbstractBikerBicyclesEnvironment {
+	public static final class TwoBikers extends AbstractBikerBicycleEnvironment {
 		@Override
 		public void run() {
 			Biker bortolozzo = oneBiker().withName("Bortolozzo").male().gimme();
@@ -17,7 +17,7 @@ public class BikersAndBikesEnvironmentSet {
 		}
 	}
 
-	public static final class TwoBikersWithBicycles extends AbstractBikerBicyclesEnvironment {
+	public static final class TwoBikersWithBicycles extends AbstractBikerBicycleEnvironment {
 		@Override
 		@GivenEnvironment(TwoBikers.class)
 		public void run() {
@@ -37,7 +37,7 @@ public class BikersAndBikesEnvironmentSet {
 		}
 	}
 
-	public static final class TwoBikersWithOneBicycle extends AbstractBikerBicyclesEnvironment {
+	public static final class TwoBikersWithOneBicycle extends AbstractBikerBicycleEnvironment {
 		@Override
 		@GivenEnvironment(TwoBikers.class)
 		public void run() {
