@@ -1,52 +1,45 @@
 package br.com.lemao.environment;
 
-import static org.junit.Assert.assertEquals;
+import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertThat;
 
 import java.util.List;
 
-import org.junit.AfterClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import br.com.lemao.environment.annotation.GivenEnvironment;
 import br.com.lemao.environment.environments.BikersAndBikesEnvironmentSet;
-import br.com.lemao.environment.hibernate.HibernateUtil;
-import br.com.lemao.environment.junit.EnvironmentRunner;
+import br.com.lemao.environment.junit.EnvironmentTransactionalRunner;
 import br.com.lemao.environment.model.bicycle.Bicycle;
 import br.com.lemao.environment.model.bicycle.BicycleSupport;
 import br.com.lemao.environment.model.biker.BikerSupport;
 
-@RunWith(EnvironmentRunner.class)
+@RunWith(EnvironmentTransactionalRunner.class)
 public class RunnerTest {
+
+	private BikerSupport bikerSupport = new BikerSupport();
+	private BicycleSupport bicycleSupport = new BicycleSupport();
 	
-	@Test 
-	@GivenEnvironment(BikersAndBikesEnvironmentSet.TwoBikersWithBicycles.class) 
+	@Test
+	@GivenEnvironment(BikersAndBikesEnvironmentSet.TwoBikersWithBicycles.class)
 	public void thereAreTwoNamedBikersWithTwoBikes() {
-		List<Bicycle> bicycles = new BicycleSupport().findAll();
-		for (Bicycle bicycle : bicycles) 
+		List<Bicycle> bicycles = bicycleSupport.findAll();
+		for (Bicycle bicycle : bicycles)
 			assertNotNull(bicycle.getOwner());
 	}
-	
-	@Test 
-	@GivenEnvironment(BikersAndBikesEnvironmentSet.TwoBikers.class) 
+
+	@Test
+	@GivenEnvironment(BikersAndBikesEnvironmentSet.TwoBikers.class)
 	public void thereAreTwoNamedBikers() {
-		BikerSupport support = new BikerSupport();
-		assertEquals(2, support.findAll().size());
+		assertThat(bikerSupport.findAll().size(), is(2));
 	}
-	
-	@Test 
+
+	@Test
 	@GivenEnvironment(BikersAndBikesEnvironmentSet.TwoBikersWithOneBicycle.class)
 	public void thereAreTwoNamedBikersWithOnlyOneBike() {
-		BicycleSupport bicycleSupport = new BicycleSupport();
-		BikerSupport bikerSupport = new BikerSupport();
-		
-		assertEquals(2, bikerSupport.findAll().size());
-		assertEquals(1, bicycleSupport.findAll().size());
-	}
-	
-	@AfterClass
-	public static void tearDownHibernateEnvironment(){
-		HibernateUtil.getCurrentSession().getTransaction().rollback();
+		assertThat(bikerSupport.findAll().size(), is(2));
+		assertThat(bicycleSupport.findAll().size(), is(1));
 	}
 }

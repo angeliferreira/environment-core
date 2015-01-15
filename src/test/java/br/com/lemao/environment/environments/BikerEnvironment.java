@@ -8,7 +8,6 @@ import br.com.lemao.environment.model.bicycle.BicycleSupport;
 import br.com.lemao.environment.model.biker.Biker;
 import br.com.lemao.environment.model.biker.BikerBuilder;
 import br.com.lemao.environment.model.biker.BikerSupport;
-import br.com.lemao.environment.model.gender.Gender;
 
 public class BikerEnvironment extends Environment {
 	
@@ -24,16 +23,10 @@ public class BikerEnvironment extends Environment {
 	}
 	
 	public void twoBikersOneMaleAnotherFemale() {
-		Biker zeBiker = oneBiker()
-				.withName("Zé Grandão")
-				.withGender(Gender.MALE)
-				.gimme();
+		Biker zeBiker = oneBiker().withName("Zé Grandão").male().gimme();
 		bikerSupport.persist(zeBiker);
 		
-		Biker maricotinhaBiker = oneBiker()
-				.withName("Maria Maricotinha")
-				.withGender(Gender.FEMALE)
-				.gimme();
+		Biker maricotinhaBiker = oneBiker().withName("Maria Maricotinha").female().gimme();
 		bikerSupport.persist(maricotinhaBiker);
 	}
 	

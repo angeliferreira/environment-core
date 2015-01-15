@@ -4,17 +4,13 @@ import static org.hamcrest.Matchers.hasSize;
 import static org.junit.Assert.assertThat;
 import br.com.lemao.environment.annotation.GivenEnvironment;
 import br.com.lemao.environment.model.biker.Biker;
-import br.com.lemao.environment.model.gender.Gender;
 
 public class TwoBikersOneMaleAnotherFemaleAndOneBicycleForMaleBiker extends	BikerEnvironment {
 	
 	@Override
 	@GivenEnvironment(OneMaleBikerAndOneBicycleForThisBiker.class)
 	public void run() {
-		Biker oliviaBiker = oneBiker()
-				.withName("Olivia")
-				.withGender(Gender.FEMALE)
-				.gimme();
+		Biker oliviaBiker = oneBiker().withName("Olivia").female().gimme();
 		bikerSupport.persist(oliviaBiker);
 	}
 	
