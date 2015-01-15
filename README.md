@@ -290,7 +290,7 @@ br.com.lemao.environment.Sample.sampleTest()
 br.com.lemao.environment.MyStatement.after()
 ```
 
-It's also available one Junit runner, this runner provide the same features that the default Junit runner provide plus the 
+It's also available one JUnit runner, this runner provide the same features that the default JUnit runner provide plus the 
 environment executions.   
 
 ```java
