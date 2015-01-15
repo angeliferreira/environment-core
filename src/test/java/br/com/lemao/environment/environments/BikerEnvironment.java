@@ -1,26 +1,10 @@
 package br.com.lemao.environment.environments;
 
-import br.com.lemao.environment.Environment;
 import br.com.lemao.environment.annotation.GivenEnvironment;
 import br.com.lemao.environment.model.bicycle.Bicycle;
-import br.com.lemao.environment.model.bicycle.BicycleBuilder;
-import br.com.lemao.environment.model.bicycle.BicycleSupport;
 import br.com.lemao.environment.model.biker.Biker;
-import br.com.lemao.environment.model.biker.BikerBuilder;
-import br.com.lemao.environment.model.biker.BikerSupport;
 
-public class BikerEnvironment extends Environment {
-	
-	protected BikerSupport bikerSupport = new BikerSupport();
-	protected BicycleSupport bicycleSupport = new BicycleSupport();
-	
-	public static BicycleBuilder oneBicycle() {
-		return new BicycleBuilder();
-	}
-
-	public static BikerBuilder oneBiker() {
-		return new BikerBuilder();
-	}
+public class BikerEnvironment extends AbstractBikerBicyclesEnvironment {
 	
 	public void twoBikersOneMaleAnotherFemale() {
 		Biker zeBiker = oneBiker().withName("Zé Grandão").male().gimme();

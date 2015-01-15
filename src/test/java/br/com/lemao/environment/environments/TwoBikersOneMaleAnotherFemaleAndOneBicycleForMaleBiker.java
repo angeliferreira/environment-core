@@ -5,7 +5,7 @@ import static org.junit.Assert.assertThat;
 import br.com.lemao.environment.annotation.GivenEnvironment;
 import br.com.lemao.environment.model.biker.Biker;
 
-public class TwoBikersOneMaleAnotherFemaleAndOneBicycleForMaleBiker extends	BikerEnvironment {
+public class TwoBikersOneMaleAnotherFemaleAndOneBicycleForMaleBiker extends AbstractBikerBicyclesEnvironment {
 	
 	@Override
 	@GivenEnvironment(OneMaleBikerAndOneBicycleForThisBiker.class)

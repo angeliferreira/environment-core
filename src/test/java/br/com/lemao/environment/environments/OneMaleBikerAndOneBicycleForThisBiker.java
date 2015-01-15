@@ -3,7 +3,7 @@ package br.com.lemao.environment.environments;
 import br.com.lemao.environment.model.bicycle.Bicycle;
 import br.com.lemao.environment.model.biker.Biker;
 
-public class OneMaleBikerAndOneBicycleForThisBiker extends BikerEnvironment {
+public class OneMaleBikerAndOneBicycleForThisBiker extends AbstractBikerBicyclesEnvironment {
 	
 	@Override
 	public void run() {
