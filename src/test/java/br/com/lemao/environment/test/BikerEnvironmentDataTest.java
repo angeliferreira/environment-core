@@ -17,9 +17,9 @@ import br.com.lemao.environment.environments.OneMaleBikerAndOneBicycleForThisBik
 import br.com.lemao.environment.environments.TwoBikersOneMaleAnotherFemaleAndOneBicycleForMaleBiker;
 import br.com.lemao.environment.junit.TransactionalRule;
 import br.com.lemao.environment.model.bicycle.Bicycle;
-import br.com.lemao.environment.model.bicycle.BicycleSupport;
+import br.com.lemao.environment.model.bicycle.support.BicycleSupport;
 import br.com.lemao.environment.model.biker.Biker;
-import br.com.lemao.environment.model.biker.BikerSupport;
+import br.com.lemao.environment.model.biker.support.BikerSupport;
 import br.com.lemao.environment.model.gender.Gender;
 
 @GivenEnvironment(OneMaleBikerAndOneBicycleForThisBiker.class)

@@ -1,7 +1,9 @@
-package br.com.lemao.environment.model.biker;
+package br.com.lemao.environment.model.biker.support;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import br.com.lemao.environment.model.biker.Biker;
 
 public final class BikerInMemorySupport {
 	

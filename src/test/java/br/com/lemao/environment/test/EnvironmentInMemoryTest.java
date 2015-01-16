@@ -13,8 +13,8 @@ import br.com.lemao.environment.annotation.GivenEnvironment;
 import br.com.lemao.environment.environments.BikersAndBikesEnvironmentSet;
 import br.com.lemao.environment.junit.EnvironmentInMemoryRunner;
 import br.com.lemao.environment.model.bicycle.Bicycle;
-import br.com.lemao.environment.model.bicycle.BicycleInMemorySupport;
-import br.com.lemao.environment.model.biker.BikerInMemorySupport;
+import br.com.lemao.environment.model.bicycle.support.BicycleInMemorySupport;
+import br.com.lemao.environment.model.biker.support.BikerInMemorySupport;
 
 @RunWith(EnvironmentInMemoryRunner.class)
 public class EnvironmentInMemoryTest {

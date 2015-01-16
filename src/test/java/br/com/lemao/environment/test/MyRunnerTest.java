@@ -13,8 +13,8 @@ import br.com.lemao.environment.annotation.GivenEnvironment;
 import br.com.lemao.environment.environments.BikersAndBikesEnvironmentSet;
 import br.com.lemao.environment.junit.EnvironmentTransactionalRunner;
 import br.com.lemao.environment.model.bicycle.Bicycle;
-import br.com.lemao.environment.model.bicycle.BicycleSupport;
-import br.com.lemao.environment.model.biker.BikerSupport;
+import br.com.lemao.environment.model.bicycle.support.BicycleSupport;
+import br.com.lemao.environment.model.biker.support.BikerSupport;
 
 @RunWith(EnvironmentTransactionalRunner.class)
 public class MyRunnerTest {

@@ -1,8 +1,9 @@
-package br.com.lemao.environment.model.bicycle;
+package br.com.lemao.environment.model.bicycle.support;
 
 import java.util.List;
 
 import br.com.lemao.environment.hibernate.HibernateUtil;
+import br.com.lemao.environment.model.bicycle.Bicycle;
 
 public final class BicycleSupport {
 
