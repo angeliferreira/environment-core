@@ -1,4 +1,4 @@
-package br.com.lemao.environment;
+package br.com.lemao.environment.test;
 
 import static br.com.lemao.environment.environments.BikerEnvironment.oneBicycle;
 import static org.hamcrest.CoreMatchers.is;
@@ -28,8 +28,8 @@ public class BikerEnvironmentDataTest {
 	@Rule
 	public TransactionalRule myRule = new TransactionalRule();
 	
-	private BikerSupport bikerSupport = new BikerSupport();
-	private BicycleSupport bicycleSupport = new BicycleSupport();
+	private BikerSupport bikerSupport = BikerSupport.getInstance();
+	private BicycleSupport bicycleSupport = BicycleSupport.getInstance();
 
 	@Test
 	public void oneBikerAndOneBicycleForThisBikerCreatedByEnvironment() {

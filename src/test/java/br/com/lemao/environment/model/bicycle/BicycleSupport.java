@@ -6,6 +6,17 @@ import br.com.lemao.environment.hibernate.HibernateUtil;
 
 public final class BicycleSupport {
 
+	private static BicycleSupport bicycleSupport;
+	
+	private BicycleSupport() {
+	}
+	
+	public static BicycleSupport getInstance() {
+		if (bicycleSupport == null)
+			bicycleSupport = new BicycleSupport();
+		return bicycleSupport;
+	}
+	
 	public void persist(Bicycle bicycle) {
 		HibernateUtil.getCurrentSession().persist(bicycle);
 	}

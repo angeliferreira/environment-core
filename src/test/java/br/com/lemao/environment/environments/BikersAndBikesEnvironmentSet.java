@@ -16,6 +16,17 @@ public class BikersAndBikesEnvironmentSet {
 			bikerSupport.persist(bruna);
 		}
 	}
+	
+	public static final class TwoBikersInMemory extends AbstractBikerBicycleEnvironment {
+		@Override
+		public void run() {
+			Biker bortolozzo = oneBiker().withName("Bortolozzo").male().gimme();
+			bikerInMemorySupport.persist(bortolozzo);
+
+			Biker bruna = oneBiker().withName("Bruna").female().gimme();
+			bikerInMemorySupport.persist(bruna);
+		}
+	}
 
 	public static final class TwoBikersWithBicycles extends AbstractBikerBicycleEnvironment {
 		@Override
@@ -36,6 +47,26 @@ public class BikersAndBikesEnvironmentSet {
 			bicycleSupport.persist(brunaBike);
 		}
 	}
+	
+	public static final class TwoBikersWithBicyclesInMemory extends AbstractBikerBicycleEnvironment {
+		@Override
+		@GivenEnvironment(TwoBikersInMemory.class)
+		public void run() {
+			Bicycle bortolozzoBike = oneBicycle()
+					.forBiker(bikerInMemorySupport.findByName("Bortolozzo"))
+					.withModelName("KHS")
+					.withSerialNumber(100l)
+					.gimme();
+			bicycleInMemorySupport.persist(bortolozzoBike);
+
+			Bicycle brunaBike = oneBicycle()
+					.forBiker(bikerInMemorySupport.findByName("Bruna"))
+					.withModelName("Moulton")
+					.withSerialNumber(100l)
+					.gimme();
+			bicycleInMemorySupport.persist(brunaBike);
+		}
+	}
 
 	public static final class TwoBikersWithOneBicycle extends AbstractBikerBicycleEnvironment {
 		@Override
@@ -47,6 +78,19 @@ public class BikersAndBikesEnvironmentSet {
 					.withSerialNumber(100l)
 					.gimme();
 			bicycleSupport.persist(bortolozzoBike);
+		}
+	}
+	
+	public static final class TwoBikersWithOneBicycleInMemory extends AbstractBikerBicycleEnvironment {
+		@Override
+		@GivenEnvironment(TwoBikersInMemory.class)
+		public void run() {
+			Bicycle bortolozzoBike = oneBicycle()
+					.forBiker(bikerInMemorySupport.findByName("Bortolozzo"))
+					.withModelName("KHS")
+					.withSerialNumber(100l)
+					.gimme();
+			bicycleInMemorySupport.persist(bortolozzoBike);
 		}
 	}
 }

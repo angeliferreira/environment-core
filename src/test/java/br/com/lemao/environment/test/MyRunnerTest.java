@@ -1,4 +1,4 @@
-package br.com.lemao.environment;
+package br.com.lemao.environment.test;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertNotNull;
@@ -17,10 +17,10 @@ import br.com.lemao.environment.model.bicycle.BicycleSupport;
 import br.com.lemao.environment.model.biker.BikerSupport;
 
 @RunWith(EnvironmentTransactionalRunner.class)
-public class RunnerTest {
+public class MyRunnerTest {
 
-	private BikerSupport bikerSupport = new BikerSupport();
-	private BicycleSupport bicycleSupport = new BicycleSupport();
+	private BikerSupport bikerSupport = BikerSupport.getInstance();
+	private BicycleSupport bicycleSupport = BicycleSupport.getInstance();
 	
 	@Test
 	@GivenEnvironment(BikersAndBikesEnvironmentSet.TwoBikersWithBicycles.class)

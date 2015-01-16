@@ -6,6 +6,17 @@ import br.com.lemao.environment.hibernate.HibernateUtil;
 
 public final class BikerSupport {
 
+	private static BikerSupport bikerSupport;
+	
+	private BikerSupport() {
+	}
+	
+	public static BikerSupport getInstance() {
+		if (bikerSupport == null)
+			bikerSupport = new BikerSupport();
+		return bikerSupport;
+	}
+	
 	public void persist(Biker biker) {
 		HibernateUtil.getCurrentSession().persist(biker);
 	}
