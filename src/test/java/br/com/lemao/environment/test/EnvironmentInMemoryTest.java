@@ -6,18 +6,20 @@ import static org.junit.Assert.assertThat;
 
 import java.util.List;
 
+import org.junit.Rule;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 
 import br.com.lemao.environment.annotation.GivenEnvironment;
 import br.com.lemao.environment.environments.BikersAndBikesEnvironmentSet;
-import br.com.lemao.environment.junit.EnvironmentInMemoryRunner;
+import br.com.lemao.environment.junit.InMemoryRule;
 import br.com.lemao.environment.model.bicycle.Bicycle;
 import br.com.lemao.environment.model.bicycle.support.BicycleInMemorySupport;
 import br.com.lemao.environment.model.biker.support.BikerInMemorySupport;
 
-@RunWith(EnvironmentInMemoryRunner.class)
 public class EnvironmentInMemoryTest {
+	
+	@Rule
+	public InMemoryRule inMemoryRule = new InMemoryRule();
 	
 	private BikerInMemorySupport bikerInMemorySupport = BikerInMemorySupport.getInstance();
 	private BicycleInMemorySupport bicycleInMemorySupport = BicycleInMemorySupport.getInstance();

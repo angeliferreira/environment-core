@@ -23,7 +23,7 @@ import br.com.lemao.environment.model.biker.support.BikerSupport;
 import br.com.lemao.environment.model.gender.Gender;
 
 @GivenEnvironment(OneMaleBikerAndOneBicycleForThisBiker.class)
-public class BikerEnvironmentDataTest {
+public class EnvironmentInBDTest {
 
 	@Rule
 	public TransactionalRule myRule = new TransactionalRule();
