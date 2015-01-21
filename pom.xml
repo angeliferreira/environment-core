@@ -12,6 +12,11 @@
 			<name>Guilherme Ferreira</name>
 			<email>angeliferreira@gmail.com</email>
 		</developer>
+		<developer>
+			<id>gutobortolozzo</id>
+			<name>João Bortolozzo</name>
+			<email>gutobortolozzo@gmail.com</email>
+		</developer>
 	</developers>
 
 	<dependencies>
