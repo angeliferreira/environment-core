@@ -7,14 +7,11 @@ import br.com.lemao.environment.model.biker.Biker;
 
 public final class BikerSupport {
 
-	private static BikerSupport bikerSupport;
+	private static BikerSupport bikerSupport = new BikerSupport();
 	
-	private BikerSupport() {
-	}
+	private BikerSupport() {}
 	
 	public static BikerSupport getInstance() {
-		if (bikerSupport == null)
-			bikerSupport = new BikerSupport();
 		return bikerSupport;
 	}
 	
@@ -34,5 +31,4 @@ public final class BikerSupport {
 		}
 		return null;
 	}
-
 }

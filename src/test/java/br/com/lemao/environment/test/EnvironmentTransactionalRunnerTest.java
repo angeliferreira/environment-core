@@ -17,7 +17,7 @@ import br.com.lemao.environment.model.bicycle.support.BicycleSupport;
 import br.com.lemao.environment.model.biker.support.BikerSupport;
 
 @RunWith(EnvironmentTransactionalRunner.class)
-public class MyRunnerTest {
+public class EnvironmentTransactionalRunnerTest {
 
 	private BikerSupport bikerSupport = BikerSupport.getInstance();
 	private BicycleSupport bicycleSupport = BicycleSupport.getInstance();

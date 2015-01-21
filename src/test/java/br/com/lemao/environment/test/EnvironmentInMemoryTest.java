@@ -21,13 +21,10 @@ public class EnvironmentInMemoryTest {
 	@Rule
 	public InMemoryRule inMemoryRule = new InMemoryRule();
 	
-	private BikerInMemorySupport bikerInMemorySupport = BikerInMemorySupport.getInstance();
-	private BicycleInMemorySupport bicycleInMemorySupport = BicycleInMemorySupport.getInstance();
-	
 	@Test
 	@GivenEnvironment(BikersAndBikesEnvironmentSet.TwoBikersWithBicyclesInMemory.class)
 	public void thereAreTwoNamedBikersWithTwoBikes() {
-		List<Bicycle> bicycles = bicycleInMemorySupport.findAll();
+		List<Bicycle> bicycles = BicycleInMemorySupport.findAll();
 		assertThat(bicycles.size(), is(2));
 		for (Bicycle bicycle : bicycles)
 			assertNotNull(bicycle.getOwner());
@@ -36,14 +33,14 @@ public class EnvironmentInMemoryTest {
 	@Test
 	@GivenEnvironment(BikersAndBikesEnvironmentSet.TwoBikersInMemory.class)
 	public void thereAreTwoNamedBikers() {
-		assertThat(bikerInMemorySupport.findAll().size(), is(2));
+		assertThat(BikerInMemorySupport.findAll().size(), is(2));
 	}
 
 	@Test
 	@GivenEnvironment(BikersAndBikesEnvironmentSet.TwoBikersWithOneBicycleInMemory.class)
 	public void thereAreTwoNamedBikersWithOnlyOneBike() {
-		assertThat(bikerInMemorySupport.findAll().size(), is(2));
-		assertThat(bicycleInMemorySupport.findAll().size(), is(1));
+		assertThat(BikerInMemorySupport.findAll().size(), is(2));
+		assertThat(BicycleInMemorySupport.findAll().size(), is(1));
 	}
 
 }

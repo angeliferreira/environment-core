@@ -2,7 +2,9 @@ package br.com.lemao.environment.environments;
 
 import br.com.lemao.environment.annotation.GivenEnvironment;
 import br.com.lemao.environment.model.bicycle.Bicycle;
+import br.com.lemao.environment.model.bicycle.support.BicycleInMemorySupport;
 import br.com.lemao.environment.model.biker.Biker;
+import br.com.lemao.environment.model.biker.support.BikerInMemorySupport;
 
 public class BikersAndBikesEnvironmentSet {
 
@@ -21,10 +23,10 @@ public class BikersAndBikesEnvironmentSet {
 		@Override
 		public void run() {
 			Biker bortolozzo = oneBiker().withName("Bortolozzo").male().gimme();
-			bikerInMemorySupport.persist(bortolozzo);
+			BikerInMemorySupport.persist(bortolozzo);
 
 			Biker bruna = oneBiker().withName("Bruna").female().gimme();
-			bikerInMemorySupport.persist(bruna);
+			BikerInMemorySupport.persist(bruna);
 		}
 	}
 
@@ -53,18 +55,18 @@ public class BikersAndBikesEnvironmentSet {
 		@GivenEnvironment(TwoBikersInMemory.class)
 		public void run() {
 			Bicycle bortolozzoBike = oneBicycle()
-					.forBiker(bikerInMemorySupport.findByName("Bortolozzo"))
+					.forBiker(BikerInMemorySupport.findByName("Bortolozzo"))
 					.withModelName("KHS")
 					.withSerialNumber(100l)
 					.gimme();
-			bicycleInMemorySupport.persist(bortolozzoBike);
+			BicycleInMemorySupport.persist(bortolozzoBike);
 
 			Bicycle brunaBike = oneBicycle()
-					.forBiker(bikerInMemorySupport.findByName("Bruna"))
+					.forBiker(BikerInMemorySupport.findByName("Bruna"))
 					.withModelName("Moulton")
 					.withSerialNumber(100l)
 					.gimme();
-			bicycleInMemorySupport.persist(brunaBike);
+			BicycleInMemorySupport.persist(brunaBike);
 		}
 	}
 
@@ -86,11 +88,11 @@ public class BikersAndBikesEnvironmentSet {
 		@GivenEnvironment(TwoBikersInMemory.class)
 		public void run() {
 			Bicycle bortolozzoBike = oneBicycle()
-					.forBiker(bikerInMemorySupport.findByName("Bortolozzo"))
+					.forBiker(BikerInMemorySupport.findByName("Bortolozzo"))
 					.withModelName("KHS")
 					.withSerialNumber(100l)
 					.gimme();
-			bicycleInMemorySupport.persist(bortolozzoBike);
+			BicycleInMemorySupport.persist(bortolozzoBike);
 		}
 	}
 }

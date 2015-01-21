@@ -7,27 +7,19 @@ import br.com.lemao.environment.model.bicycle.Bicycle;
 
 public final class BicycleInMemorySupport {
 	
-	private static BicycleInMemorySupport bicycleInMemorySupport;
 	private static List<Bicycle> bicycles = new ArrayList<Bicycle>();
 	
-	private BicycleInMemorySupport() {
-	}
+	private BicycleInMemorySupport() {}
 	
-	public static BicycleInMemorySupport getInstance() {
-		if (bicycleInMemorySupport == null)
-			bicycleInMemorySupport = new BicycleInMemorySupport();
-		return bicycleInMemorySupport;
-	}
-	
-	public void persist(Bicycle bicycle) {
+	public static void persist(Bicycle bicycle) {
 		bicycles.add(bicycle);
 	}
 	
-	public List<Bicycle> findAll() {
+	public static List<Bicycle> findAll() {
 		return bicycles;
 	}
 	
-	public Bicycle findByModelName(String modelName) {
+	public static Bicycle findByModelName(String modelName) {
 		for (Bicycle bicycle : findAll()) {
 			if (bicycle.getModelName().equals(modelName))
 				return bicycle;			
@@ -35,8 +27,7 @@ public final class BicycleInMemorySupport {
 		return null;
 	}
 
-	public void dropObjects() {
+	public static void dropObjects() {
 		bicycles.clear();
 	}
-
 }
