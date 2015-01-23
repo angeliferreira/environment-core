@@ -89,9 +89,10 @@ public class EnvironmentStatement extends Statement {
 		try {
 			before();
 			statement.evaluate();
-			after();
 		} catch (Exception e) {
 			throw new EnvironmentException(getGivenEnvironmentAnnotation().getClass(), getGivenEnvironmentAnnotation().environmentName(), e);
+		}finally{
+			after();
 		}
 	}
 
