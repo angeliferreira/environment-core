@@ -17,7 +17,7 @@ import br.com.lemao.environment.model.bicycle.support.BicycleInMemorySupport;
 import br.com.lemao.environment.model.biker.support.BikerInMemorySupport;
 
 @RunWith(InMemoryRunner.class)
-public class EnvironmentTransactionalRunnerTest {
+public class EnvironmentRunnerTest {
 
 	@Test
 	@GivenEnvironment(BikersAndBikesEnvironmentSet.TwoBikersWithBicycles.class)

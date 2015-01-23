@@ -23,7 +23,7 @@ import br.com.lemao.environment.model.biker.support.BikerInMemorySupport;
 import br.com.lemao.environment.model.gender.Gender;
 
 @GivenEnvironment(OneMaleBikerAndOneBicycleForThisBiker.class)
-public class EnvironmentInBDTest {
+public class EnvironmentWithClassAnnotationTest {
 
 	@Rule
 	public InMemoryRule myRule = new InMemoryRule();
