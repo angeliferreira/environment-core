@@ -17,5 +17,4 @@ public class InMemoryStatement extends EnvironmentStatement {
 		BikerInMemorySupport.dropObjects();
 		BicycleInMemorySupport.dropObjects();
 	}
-
 }

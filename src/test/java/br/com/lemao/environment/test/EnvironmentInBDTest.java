@@ -1,6 +1,6 @@
 package br.com.lemao.environment.test;
 
-import static br.com.lemao.environment.environments.BikerEnvironment.oneBicycle;
+import static br.com.lemao.environment.environments.AbstractBikerBicycleEnvironment.oneBicycle;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
@@ -15,32 +15,29 @@ import br.com.lemao.environment.annotation.IgnoreEnvironment;
 import br.com.lemao.environment.environments.BikerEnvironment;
 import br.com.lemao.environment.environments.OneMaleBikerAndOneBicycleForThisBiker;
 import br.com.lemao.environment.environments.TwoBikersOneMaleAnotherFemaleAndOneBicycleForMaleBiker;
-import br.com.lemao.environment.junit.TransactionalRule;
+import br.com.lemao.environment.junit.InMemoryRule;
 import br.com.lemao.environment.model.bicycle.Bicycle;
-import br.com.lemao.environment.model.bicycle.support.BicycleSupport;
+import br.com.lemao.environment.model.bicycle.support.BicycleInMemorySupport;
 import br.com.lemao.environment.model.biker.Biker;
-import br.com.lemao.environment.model.biker.support.BikerSupport;
+import br.com.lemao.environment.model.biker.support.BikerInMemorySupport;
 import br.com.lemao.environment.model.gender.Gender;
 
 @GivenEnvironment(OneMaleBikerAndOneBicycleForThisBiker.class)
 public class EnvironmentInBDTest {
 
 	@Rule
-	public TransactionalRule myRule = new TransactionalRule();
+	public InMemoryRule myRule = new InMemoryRule();
 	
-	private BikerSupport bikerSupport = BikerSupport.getInstance();
-	private BicycleSupport bicycleSupport = BicycleSupport.getInstance();
-
 	@Test
 	public void oneBikerAndOneBicycleForThisBikerCreatedByEnvironment() {
-		List<Biker> bikers = bikerSupport.findAll();
+		List<Biker> bikers = BikerInMemorySupport.findAll();
 		assertThat(bikers.size(), is(1));
 		
 		Biker biker = bikers.get(0);
 		assertThat(biker.getGender(), is(Gender.MALE));
-		assertThat(biker.getName(), is("Lemão"));
+		assertThat(biker.getName(), is("Lemï¿½o"));
 		
-		List<Bicycle> bicycles = bicycleSupport.findAll();
+		List<Bicycle> bicycles = BicycleInMemorySupport.findAll();
 		assertThat(bicycles.size(), is(1));
 		
 		Bicycle bicycle = bicycles.get(0);
@@ -52,25 +49,25 @@ public class EnvironmentInBDTest {
 	@Test
 	@IgnoreEnvironment
 	public void nothingCreatedBecauseTheEnvironmentWasIgnored() {
-		assertTrue(bikerSupport.findAll().isEmpty());
-		assertTrue(bicycleSupport.findAll().isEmpty());
+		assertTrue(BikerInMemorySupport.findAll().isEmpty());
+		assertTrue(BicycleInMemorySupport.findAll().isEmpty());
 	}
 	
 	@Test
 	@GivenEnvironment(TwoBikersOneMaleAnotherFemaleAndOneBicycleForMaleBiker.class)
 	public void twoBikersOneMaleAnotherFemaleAndOneBicycleForMaleBikerCreatedByEnvironment() {
-		List<Biker> bikers = bikerSupport.findAll();
+		List<Biker> bikers = BikerInMemorySupport.findAll();
 		assertThat(bikers.size(), is(2));
 		
-		Biker lemaoBiker = bikerSupport.findByName("Lemão");
+		Biker lemaoBiker = BikerInMemorySupport.findByName("Lemï¿½o");
 		assertThat(lemaoBiker.getGender(), is(Gender.MALE));
-		assertThat(lemaoBiker.getName(), is("Lemão"));
+		assertThat(lemaoBiker.getName(), is("Lemï¿½o"));
 		
-		Biker oliviaBiker = bikerSupport.findByName("Olivia");
+		Biker oliviaBiker = BikerInMemorySupport.findByName("Olivia");
 		assertThat(oliviaBiker.getGender(), is(Gender.FEMALE));
 		assertThat(oliviaBiker.getName(), is("Olivia"));
 		
-		List<Bicycle> bicycles = bicycleSupport.findAll();
+		List<Bicycle> bicycles = BicycleInMemorySupport.findAll();
 		assertThat(bicycles.size(), is(1));
 		
 		Bicycle bicycle = bicycles.get(0);
@@ -82,14 +79,14 @@ public class EnvironmentInBDTest {
 	@Test
 	@GivenEnvironment(value=BikerEnvironment.class, environmentName="twoBikersOneMaleAnotherFemale")
 	public void twoBikersOneMaleAnotherFemaleCreatedByEnvironment() {
-		List<Biker> bikers = bikerSupport.findAll();
+		List<Biker> bikers = BikerInMemorySupport.findAll();
 		assertThat(bikers.size(), is(2));
 		
-		Biker zeBiker = bikerSupport.findByName("Zé Grandão");
+		Biker zeBiker = BikerInMemorySupport.findByName("Zï¿½ Grandï¿½o");
 		assertThat(zeBiker.getGender(), is(Gender.MALE));
-		assertThat(zeBiker.getName(), is("Zé Grandão"));
+		assertThat(zeBiker.getName(), is("Zï¿½ Grandï¿½o"));
 		
-		Biker maricotinhaBiker = bikerSupport.findByName("Maria Maricotinha");
+		Biker maricotinhaBiker = BikerInMemorySupport.findByName("Maria Maricotinha");
 		assertThat(maricotinhaBiker.getGender(), is(Gender.FEMALE));
 		assertThat(maricotinhaBiker.getName(), is("Maria Maricotinha"));
 	}
@@ -97,26 +94,26 @@ public class EnvironmentInBDTest {
 	@Test
 	@GivenEnvironment(value=BikerEnvironment.class, environmentName="twoBikersOneMaleAnotherFemaleWithBicycles")
 	public void twoBikersOneMaleAnotherFemaleWithBicyclesCreatedByEnvironment() {
-		List<Biker> bikers = bikerSupport.findAll();
+		List<Biker> bikers = BikerInMemorySupport.findAll();
 		assertThat(bikers.size(), is(2));
 		
-		Biker zeBiker = bikerSupport.findByName("Zé Grandão");
+		Biker zeBiker = BikerInMemorySupport.findByName("Zï¿½ Grandï¿½o");
 		assertThat(zeBiker.getGender(), is(Gender.MALE));
-		assertThat(zeBiker.getName(), is("Zé Grandão"));
+		assertThat(zeBiker.getName(), is("Zï¿½ Grandï¿½o"));
 		
-		Biker maricotinhaBiker = bikerSupport.findByName("Maria Maricotinha");
+		Biker maricotinhaBiker = BikerInMemorySupport.findByName("Maria Maricotinha");
 		assertThat(maricotinhaBiker.getGender(), is(Gender.FEMALE));
 		assertThat(maricotinhaBiker.getName(), is("Maria Maricotinha"));
 		
-		List<Bicycle> bicycles = bicycleSupport.findAll();
+		List<Bicycle> bicycles = BicycleInMemorySupport.findAll();
 		assertThat(bicycles.size(), is(2));
 		
-		Bicycle epicBicycle = bicycleSupport.findByModelName("S-WORKS EPIC 29");
+		Bicycle epicBicycle = BicycleInMemorySupport.findByModelName("S-WORKS EPIC 29");
 		assertThat(epicBicycle.getModelName(), is("S-WORKS EPIC 29"));
 		assertThat(epicBicycle.getSerialNumber(), is(165487L));
 		assertThat(epicBicycle.getOwner(), is(zeBiker));
 		
-		Bicycle allezBicycle = bicycleSupport.findByModelName("S-WORKS ALLEZ DI2");
+		Bicycle allezBicycle = BicycleInMemorySupport.findByModelName("S-WORKS ALLEZ DI2");
 		assertThat(allezBicycle.getModelName(), is("S-WORKS ALLEZ DI2"));
 		assertThat(allezBicycle.getSerialNumber(), is(98657L));
 		assertThat(allezBicycle.getOwner(), is(maricotinhaBiker));
@@ -125,42 +122,42 @@ public class EnvironmentInBDTest {
 	@Test
 	@GivenEnvironment(value=BikerEnvironment.class, environmentName="twoBikersOneMaleAnotherFemale")
 	public void twoBikersOneMaleAnotherFemaleWithBicyclesCreatedByTest() {
-		List<Biker> bikers = bikerSupport.findAll();
+		List<Biker> bikers = BikerInMemorySupport.findAll();
 		assertThat(bikers.size(), is(2));
 		
-		Biker zeBiker = bikerSupport.findByName("Zé Grandão");
+		Biker zeBiker = BikerInMemorySupport.findByName("Zï¿½ Grandï¿½o");
 		assertThat(zeBiker.getGender(), is(Gender.MALE));
-		assertThat(zeBiker.getName(), is("Zé Grandão"));
+		assertThat(zeBiker.getName(), is("Zï¿½ Grandï¿½o"));
 		
-		Biker maricotinhaBiker = bikerSupport.findByName("Maria Maricotinha");
+		Biker maricotinhaBiker = BikerInMemorySupport.findByName("Maria Maricotinha");
 		assertThat(maricotinhaBiker.getGender(), is(Gender.FEMALE));
 		assertThat(maricotinhaBiker.getName(), is("Maria Maricotinha"));
 		
-		assertTrue(bicycleSupport.findAll().isEmpty());
+		assertTrue(BicycleInMemorySupport.findAll().isEmpty());
 		
 		Bicycle epicBicycle = oneBicycle()
 				.forBiker(zeBiker)
 				.withModelName("S-WORKS EPIC 29")
 				.withSerialNumber(165487L)
 				.gimme();
-		bicycleSupport.persist(epicBicycle);
+		BicycleInMemorySupport.persist(epicBicycle);
 		
 		Bicycle allezBicycle = oneBicycle()
 				.forBiker(maricotinhaBiker)
 				.withModelName("S-WORKS ALLEZ DI2")
 				.withSerialNumber(98657L)
 				.gimme();
-		bicycleSupport.persist(allezBicycle);
+		BicycleInMemorySupport.persist(allezBicycle);
 		
-		List<Bicycle> bicycles = bicycleSupport.findAll();
+		List<Bicycle> bicycles = BicycleInMemorySupport.findAll();
 		assertThat(bicycles.size(), is(2));
 		
-		epicBicycle = bicycleSupport.findByModelName("S-WORKS EPIC 29");
+		epicBicycle = BicycleInMemorySupport.findByModelName("S-WORKS EPIC 29");
 		assertThat(epicBicycle.getModelName(), is("S-WORKS EPIC 29"));
 		assertThat(epicBicycle.getSerialNumber(), is(165487L));
 		assertThat(epicBicycle.getOwner(), is(zeBiker));
 		
-		allezBicycle = bicycleSupport.findByModelName("S-WORKS ALLEZ DI2");
+		allezBicycle = BicycleInMemorySupport.findByModelName("S-WORKS ALLEZ DI2");
 		assertThat(allezBicycle.getModelName(), is("S-WORKS ALLEZ DI2"));
 		assertThat(allezBicycle.getSerialNumber(), is(98657L));
 		assertThat(allezBicycle.getOwner(), is(maricotinhaBiker));

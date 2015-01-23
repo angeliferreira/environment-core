@@ -1,16 +1,9 @@
 package br.com.lemao.environment.model.biker;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-
 import br.com.lemao.environment.model.gender.Gender;
 
-@Entity
 public class Biker {
 
-	@Id
-	@GeneratedValue
 	private Long id;
 	private String name;
 	private Gender gender;
