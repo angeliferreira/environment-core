@@ -7,27 +7,19 @@ import br.com.lemao.environment.model.biker.Biker;
 
 public final class BikerInMemorySupport {
 	
-	private static BikerInMemorySupport bikerInMemorySupport;
 	private static List<Biker> bikers = new ArrayList<Biker>();
 	
-	private BikerInMemorySupport() {
-	}
+	private BikerInMemorySupport() {}
 	
-	public static BikerInMemorySupport getInstance() {
-		if (bikerInMemorySupport == null)
-			bikerInMemorySupport = new BikerInMemorySupport();
-		return bikerInMemorySupport;
-	}
-	
-	public void persist(Biker bicycle) {
+	public static void persist(Biker bicycle) {
 		bikers.add(bicycle);
 	}
 	
-	public List<Biker> findAll() {
+	public static List<Biker> findAll() {
 		return bikers;
 	}
 	
-	public Biker findByName(String name) {
+	public static Biker findByName(String name) {
 		for (Biker biker : findAll()) {
 			if (biker.getName().equals(name))
 				return biker;			
@@ -35,8 +27,7 @@ public final class BikerInMemorySupport {
 		return null;
 	}
 
-	public void dropObjects() {
+	public static void dropObjects() {
 		bikers.clear();
 	}
-
 }

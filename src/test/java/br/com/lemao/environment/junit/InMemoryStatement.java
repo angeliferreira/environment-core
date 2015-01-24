@@ -14,8 +14,7 @@ public class InMemoryStatement extends EnvironmentStatement {
 
 	@Override
 	protected void after() {
-		BikerInMemorySupport.getInstance().dropObjects();
-		BicycleInMemorySupport.getInstance().dropObjects();
+		BikerInMemorySupport.dropObjects();
+		BicycleInMemorySupport.dropObjects();
 	}
-
 }

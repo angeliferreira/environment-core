@@ -1,21 +1,12 @@
 package br.com.lemao.environment.model.bicycle;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
-
 import br.com.lemao.environment.model.biker.Biker;
 
-@Entity
 public class Bicycle {
 
-	@Id
-	@GeneratedValue
 	private Long id;
 	private Long serialNumber;
 	private String modelName;
-	@OneToOne
 	private Biker owner;
 
 	public Long getId() {

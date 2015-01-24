@@ -11,21 +11,18 @@ import org.junit.runner.RunWith;
 
 import br.com.lemao.environment.annotation.GivenEnvironment;
 import br.com.lemao.environment.environments.BikersAndBikesEnvironmentSet;
-import br.com.lemao.environment.junit.EnvironmentTransactionalRunner;
+import br.com.lemao.environment.junit.InMemoryRunner;
 import br.com.lemao.environment.model.bicycle.Bicycle;
-import br.com.lemao.environment.model.bicycle.support.BicycleSupport;
-import br.com.lemao.environment.model.biker.support.BikerSupport;
+import br.com.lemao.environment.model.bicycle.support.BicycleInMemorySupport;
+import br.com.lemao.environment.model.biker.support.BikerInMemorySupport;
 
-@RunWith(EnvironmentTransactionalRunner.class)
-public class MyRunnerTest {
+@RunWith(InMemoryRunner.class)
+public class EnvironmentRunnerTest {
 
-	private BikerSupport bikerSupport = BikerSupport.getInstance();
-	private BicycleSupport bicycleSupport = BicycleSupport.getInstance();
-	
 	@Test
 	@GivenEnvironment(BikersAndBikesEnvironmentSet.TwoBikersWithBicycles.class)
 	public void thereAreTwoNamedBikersWithTwoBikes() {
-		List<Bicycle> bicycles = bicycleSupport.findAll();
+		List<Bicycle> bicycles = BicycleInMemorySupport.findAll();
 		for (Bicycle bicycle : bicycles)
 			assertNotNull(bicycle.getOwner());
 	}
@@ -33,13 +30,13 @@ public class MyRunnerTest {
 	@Test
 	@GivenEnvironment(BikersAndBikesEnvironmentSet.TwoBikers.class)
 	public void thereAreTwoNamedBikers() {
-		assertThat(bikerSupport.findAll().size(), is(2));
+		assertThat(BikerInMemorySupport.findAll().size(), is(2));
 	}
 
 	@Test
 	@GivenEnvironment(BikersAndBikesEnvironmentSet.TwoBikersWithOneBicycle.class)
 	public void thereAreTwoNamedBikersWithOnlyOneBike() {
-		assertThat(bikerSupport.findAll().size(), is(2));
-		assertThat(bicycleSupport.findAll().size(), is(1));
+		assertThat(BikerInMemorySupport.findAll().size(), is(2));
+		assertThat(BicycleInMemorySupport.findAll().size(), is(1));
 	}
 }
