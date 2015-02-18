@@ -9,7 +9,7 @@ import br.com.lemao.environment.model.biker.support.BikerInMemorySupport;
 public class BikerEnvironment extends AbstractBikerBicycleEnvironment {
 	
 	public void twoBikersOneMaleAnotherFemale() {
-		Biker zeBiker = oneBiker().withName("Z� Grand�o").male().gimme();
+		Biker zeBiker = oneBiker().withName("Zé Grandão").male().gimme();
 		BikerInMemorySupport.persist(zeBiker);
 		
 		Biker maricotinhaBiker = oneBiker().withName("Maria Maricotinha").female().gimme();
@@ -19,7 +19,7 @@ public class BikerEnvironment extends AbstractBikerBicycleEnvironment {
 	@GivenEnvironment(value=BikerEnvironment.class, environmentName="twoBikersOneMaleAnotherFemale")
 	public void twoBikersOneMaleAnotherFemaleWithBicycles() {
 		Bicycle epicBicycle = oneBicycle()
-				.forBiker(BikerInMemorySupport.findByName("Z� Grand�o"))
+				.forBiker(BikerInMemorySupport.findByName("Zé Grandão"))
 				.withModelName("S-WORKS EPIC 29")
 				.withSerialNumber(165487L)
 				.gimme();

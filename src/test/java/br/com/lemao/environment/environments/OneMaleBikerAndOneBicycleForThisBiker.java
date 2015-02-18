@@ -9,7 +9,7 @@ public class OneMaleBikerAndOneBicycleForThisBiker extends AbstractBikerBicycleE
 	
 	@Override
 	public void run() {
-		Biker lemaoBiker = oneBiker().withName("Lem�o").male().gimme();
+		Biker lemaoBiker = oneBiker().withName("Lemão").male().gimme();
 		BikerInMemorySupport.persist(lemaoBiker);
 		
 		Bicycle bicycle = oneBicycle()

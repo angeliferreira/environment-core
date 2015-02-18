@@ -35,7 +35,7 @@ public class EnvironmentWithClassAnnotationTest {
 		
 		Biker biker = bikers.get(0);
 		assertThat(biker.getGender(), is(Gender.MALE));
-		assertThat(biker.getName(), is("Lem�o"));
+		assertThat(biker.getName(), is("Lemão"));
 		
 		List<Bicycle> bicycles = BicycleInMemorySupport.findAll();
 		assertThat(bicycles.size(), is(1));
@@ -59,9 +59,9 @@ public class EnvironmentWithClassAnnotationTest {
 		List<Biker> bikers = BikerInMemorySupport.findAll();
 		assertThat(bikers.size(), is(2));
 		
-		Biker lemaoBiker = BikerInMemorySupport.findByName("Lem�o");
+		Biker lemaoBiker = BikerInMemorySupport.findByName("Lemão");
 		assertThat(lemaoBiker.getGender(), is(Gender.MALE));
-		assertThat(lemaoBiker.getName(), is("Lem�o"));
+		assertThat(lemaoBiker.getName(), is("Lemão"));
 		
 		Biker oliviaBiker = BikerInMemorySupport.findByName("Olivia");
 		assertThat(oliviaBiker.getGender(), is(Gender.FEMALE));
@@ -82,9 +82,9 @@ public class EnvironmentWithClassAnnotationTest {
 		List<Biker> bikers = BikerInMemorySupport.findAll();
 		assertThat(bikers.size(), is(2));
 		
-		Biker zeBiker = BikerInMemorySupport.findByName("Z� Grand�o");
+		Biker zeBiker = BikerInMemorySupport.findByName("Zé Grandão");
 		assertThat(zeBiker.getGender(), is(Gender.MALE));
-		assertThat(zeBiker.getName(), is("Z� Grand�o"));
+		assertThat(zeBiker.getName(), is("Zé Grandão"));
 		
 		Biker maricotinhaBiker = BikerInMemorySupport.findByName("Maria Maricotinha");
 		assertThat(maricotinhaBiker.getGender(), is(Gender.FEMALE));
@@ -97,9 +97,9 @@ public class EnvironmentWithClassAnnotationTest {
 		List<Biker> bikers = BikerInMemorySupport.findAll();
 		assertThat(bikers.size(), is(2));
 		
-		Biker zeBiker = BikerInMemorySupport.findByName("Z� Grand�o");
+		Biker zeBiker = BikerInMemorySupport.findByName("Zé Grandão");
 		assertThat(zeBiker.getGender(), is(Gender.MALE));
-		assertThat(zeBiker.getName(), is("Z� Grand�o"));
+		assertThat(zeBiker.getName(), is("Zé Grandão"));
 		
 		Biker maricotinhaBiker = BikerInMemorySupport.findByName("Maria Maricotinha");
 		assertThat(maricotinhaBiker.getGender(), is(Gender.FEMALE));
@@ -125,9 +125,9 @@ public class EnvironmentWithClassAnnotationTest {
 		List<Biker> bikers = BikerInMemorySupport.findAll();
 		assertThat(bikers.size(), is(2));
 		
-		Biker zeBiker = BikerInMemorySupport.findByName("Z� Grand�o");
+		Biker zeBiker = BikerInMemorySupport.findByName("Zé Grandão");
 		assertThat(zeBiker.getGender(), is(Gender.MALE));
-		assertThat(zeBiker.getName(), is("Z� Grand�o"));
+		assertThat(zeBiker.getName(), is("Zé Grandão"));
 		
 		Biker maricotinhaBiker = BikerInMemorySupport.findByName("Maria Maricotinha");
 		assertThat(maricotinhaBiker.getGender(), is(Gender.FEMALE));
